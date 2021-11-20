@@ -22,6 +22,7 @@ ll factorial(int x) {
 }
 
 
+
 int main() {
     memset(f, 0, sizeof(f));
     printf("%d\n", factorial(5));
