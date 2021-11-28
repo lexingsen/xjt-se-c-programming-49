@@ -16,7 +16,7 @@ int count(char* s) {
 }
 
 int main() {
-    char s[] = "hello world shi jie ni hao a wo";
+    char s[] = "hello world ni hao shi jie";
     int ans = count(s);
     printf("ans = %d\n", ans);
     return 0;
