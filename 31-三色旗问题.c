@@ -1,42 +1,49 @@
-#includ <stdio.h>
+#include <stdio.h>
 
 
-enum Color {
+typedef enum {
     BLUE = 1,
     WHITE = 2,
-    RED
-};
+    RED = 3
+} Color;
 
-void swap(Color* color, int x, int y) {
-    char t = color[x];
-    color[x] = color[y];
-    color[y] = t;
+Color arr[] = {RED, BLUE, RED, WHITE, WHITE, RED, WHITE, BLUE, BLUE, RED, WHITE};
+
+void Swap(Color* arr, int i, int j) {
+    Color t = arr[i];
+    arr[i] = arr[j];
+    arr[j] = t;
+}
+
+void Print(Color* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void Sort(Color* arr, int n) {
+    
+    int i = 0;
+    int j = 0;
+    int k = n - 1;
+    while (i <= k) {
+        if (arr[i] == BLUE) {
+            Swap(arr, i++, j++);
+        } else if (arr[i] == WHITE) {
+            i++;
+        } else if (arr[i] == RED) {
+            Swap(arr, i, k--);
+        }
+    }
+    return;
 }
 
 int main() {
-    Color color[] = {};
-    int n = sizeof(color) / sizeof(char);
-    int r = n - 1;
-    int w = 0;
-    int b = 0;
-
-    while (w <= r) {
-        if (color[w] == WHITE) {
-            w++;
-        } else if (color[w] == BLUE) {
-            swap(color, w, b);
-            w++;
-            b++;
-        } else {
-            // RED
-            while (w < r && color[r] == RED) {
-                r--;
-            }
-            swap(color, r, w);
-            r--;
-        }
-    }
-    return 0;
+    int n = sizeof(arr) / sizeof(arr[0]);
+    Print(arr, n);
+    Sort(arr, n);
+    Print(arr, n);
 }
 
 
