@@ -32,10 +32,11 @@ bool IsAutomorphicNumber(int x) {
     itoa(x, t, 10);
     int lens = strlen(s);
     int lent = strlen(t);
-    for (int i = lens - 1, j = lent - 1; i > lens - 1 - cnt; i--, j--) {
+    for (int i = lens - 1, j = lent - 1; cnt; i--, j--) {
         if (s[i] != t[j]) {
             return false;
         }
+        cnt--;
     }
     return true;
 }
